@@ -1,0 +1,8 @@
+<.header>
+  New Project
+  <:subtitle>Use this form to manage project records in your database.</:subtitle>
+</.header>
+
+<.project_form changeset={@changeset} action={~p"/projects"} current_user={@current_user}/>
+
+<.back navigate={~p"/projects"}>Back to projects</.back>

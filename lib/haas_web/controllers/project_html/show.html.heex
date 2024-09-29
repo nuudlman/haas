@@ -1,0 +1,18 @@
+<.header>
+  Project Overview
+  <:subtitle><%= @project.name %></:subtitle>
+  <:actions>
+    <.link href={~p"/projects/#{@project}/edit"}>
+      <.button>Edit</.button>
+    </.link>
+    <.link href={~p"/projects/#{@project}"} method="delete" data-confirm="Are you sure?">
+      <.button>Delete</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @project.name %></:item>
+</.list>
+
+<.back navigate={~p"/projects"}>Back to projects</.back>
