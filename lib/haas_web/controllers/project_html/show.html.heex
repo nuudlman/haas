@@ -1,18 +1,34 @@
 <.header>
-  Project Overview
-  <:subtitle><%= @project.name %></:subtitle>
+  Project <%= @project.name %>
+  <:subtitle><%= @project.description %></:subtitle>
   <:actions>
     <.link href={~p"/projects/#{@project}/edit"}>
-      <.button>Edit</.button>
+      <.button>Edit Project</.button>
     </.link>
     <.link href={~p"/projects/#{@project}"} method="delete" data-confirm="Are you sure?">
-      <.button>Delete</.button>
+      <.button>Delete Porject</.button>
+    </.link>
+    <.link href={~p"/projects/#{@project}/hardware/new"}>
+      <.button>New Hardware Set</.button>
     </.link>
   </:actions>
 </.header>
 
-<.list>
-  <:item title="Description"><%= @project.description %></:item>
-</.list>
+<.table id="hardware" rows={@hardware} row_click={&JS.navigate(~p"/projects/#{@project}/hardware/#{&1}")}>
+  <:col :let={hardware_set} label="Number"><%= hardware_set.id %></:col>
+  <:col :let={hardware_set} label="Capacity"><%= hardware_set.capacity %></:col>
+  <:col :let={hardware_set} label="Available"><%= hardware_set.available %></:col>
+  <:action :let={hardware_set}>
+   <div class="sr-only">
+      <.link navigate={~p"/projects/#{@project}/hardware/#{hardware_set}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/projects/#{@project}/hardware/#{hardware_set}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={hardware_set}>
+    <.link href={~p"/projects/#{@project}/hardware/#{hardware_set}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>
 
-<.back navigate={~p"/projects"}>Back to projects</.back>
+<.back navigate={~p"/projects"}>Back</.back>

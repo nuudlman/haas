@@ -1,10 +1,16 @@
-<.simple_form :let={f} for={@changeset} action={@action}>
+<.simple_form :let={f} for={@changeset} action={@action} project={@project.id}>
   <.error :if={@changeset.action}>
     Oops, something went wrong! Please check the errors below.
   </.error>
-  <.input field={f[:project_id]} type="number" label="Project" />
-  <.input field={f[:capacity]} type="number" label="Capacity" />
-  <.input field={f[:available]} type="number" label="Available" />
+  <.input field={f[:project_id]} type="hidden" value={@project.id} />
+  <.input field={f[:capacity]} type="number" label="Capacity" id="{@project}-hardware-form-capacity"/>
+  <.input field={f[:available]} type="hidden" value={@changeset.data.capacity} id="{@project}-hardware-form-available"/>
+  <script>
+    document.getElementById("{@project}-hardware-form-capacity").addEventListener("change", (event) => {
+      const capacity = event.target.value;
+      document.getElementById("{@project}-hardware-form-available").value = capacity;
+    });
+  </script>
   <:actions>
     <.button>Save Hardware set</.button>
   </:actions>

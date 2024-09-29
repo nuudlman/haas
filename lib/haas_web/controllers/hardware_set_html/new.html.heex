@@ -1,8 +1,7 @@
 <.header>
-  New Hardware set
-  <:subtitle>Use this form to manage hardware_set records in your database.</:subtitle>
+  New Hardware Set
 </.header>
 
-<.hardware_set_form changeset={@changeset} action={~p"/hardware"} />
+<.hardware_set_form changeset={@changeset} action={~p"/projects/#{@project}/hardware"} project={@project}/>
 
-<.back navigate={~p"/hardware"}>Back to hardware</.back>
+<.back navigate={~p"/projects/#{@project}"}>Back to project <%= @project.name %></.back>

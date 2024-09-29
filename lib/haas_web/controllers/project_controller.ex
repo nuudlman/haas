@@ -3,6 +3,7 @@ defmodule HaasWeb.ProjectController do
 
   alias Haas.Projects
   alias Haas.Projects.Project
+  alias Haas.Hardware
 
   def index(conn, _params) do
     projects = Projects.list_projects(conn.assigns.current_user)
@@ -28,7 +29,8 @@ defmodule HaasWeb.ProjectController do
 
   def show(conn, %{"id" => id}) do
     project = Projects.get_project!(id)
-    render(conn, :show, project: project)
+    hardware = Hardware.list_hardware(project)
+    render(conn, :show, project: project, hardware: hardware)
   end
 
   def edit(conn, %{"id" => id}) do

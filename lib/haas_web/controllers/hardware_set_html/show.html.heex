@@ -1,17 +1,15 @@
 <.header>
-  Hardware set <%= @hardware_set.id %>
-  <:subtitle>This is a hardware_set record from your database.</:subtitle>
+  Hardware Set <%= @hardware_set.id %>
   <:actions>
-    <.link href={~p"/hardware/#{@hardware_set}/edit"}>
-      <.button>Edit hardware_set</.button>
+    <.link href={~p"/projects/#{@project_id}/hardware/#{@hardware_set}/edit"}>
+      <.button>Edit</.button>
     </.link>
   </:actions>
 </.header>
 
 <.list>
-  <:item title="Project"><%= @hardware_set.project_id %></:item>
   <:item title="Capacity"><%= @hardware_set.capacity %></:item>
   <:item title="Available"><%= @hardware_set.available %></:item>
 </.list>
 
-<.back navigate={~p"/hardware"}>Back to hardware</.back>
+<.back navigate={~p"/projects/#{@project_id}"}>Back</.back>
