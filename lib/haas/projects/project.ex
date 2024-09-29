@@ -4,7 +4,8 @@ defmodule Haas.Projects.Project do
 
   schema "projects" do
     field :name, :string
-    field :email, :string
+    field :description, :string
+    field :user_id, :integer
 
     timestamps(type: :utc_datetime)
   end
@@ -12,7 +13,7 @@ defmodule Haas.Projects.Project do
   @doc false
   def changeset(project, attrs) do
     project
-    |> cast(attrs, [:name, :email])
-    |> validate_required([:name, :email])
+    |> cast(attrs, [:name, :description, :user_id])
+    |> validate_required([:name, :description, :user_id])
   end
 end

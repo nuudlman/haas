@@ -31,7 +31,7 @@ defmodule Haas.Projects do
       [%Project{}, ...]
   """
   def list_projects(%User{} = user) do
-    Repo.all(from p in Project, where: p.email == ^user.email)
+    Repo.all(from p in Project, where: p.user_id == ^user.id)
   end
 
   @doc """

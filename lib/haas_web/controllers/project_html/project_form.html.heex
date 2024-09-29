@@ -1,9 +1,10 @@
-<.simple_form :let={f} for={@changeset} action={@action} current_user={@current_user.email}>
+<.simple_form :let={f} for={@changeset} action={@action} current_user={@current_user.id}>
   <.error :if={@changeset.action}>
     Oops, something went wrong! Please check the errors below.
   </.error>
   <.input field={f[:name]} type="text" label="Name" />
-  <.input field={f[:email]} type="hidden" value={@current_user.email} />
+  <.input field={f[:description]} type="text" label="Description" />
+  <.input field={f[:user_id]} type="hidden" value={@current_user.id} />
   <:actions>
     <.button>Save Project</.button>
   </:actions>
