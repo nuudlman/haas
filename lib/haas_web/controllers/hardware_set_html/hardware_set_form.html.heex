@@ -1,0 +1,11 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:project_id]} type="number" label="Project" />
+  <.input field={f[:capacity]} type="number" label="Capacity" />
+  <.input field={f[:available]} type="number" label="Available" />
+  <:actions>
+    <.button>Save Hardware set</.button>
+  </:actions>
+</.simple_form>

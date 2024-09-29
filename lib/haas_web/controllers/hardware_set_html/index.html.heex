@@ -1,0 +1,25 @@
+<.header>
+  Listing Hardware
+  <:actions>
+    <.link href={~p"/hardware/new"}>
+      <.button>New Hardware set</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="hardware" rows={@hardware} row_click={&JS.navigate(~p"/hardware/#{&1}")}>
+  <:col :let={hardware_set} label="Project"><%= hardware_set.project_id %></:col>
+  <:col :let={hardware_set} label="Capacity"><%= hardware_set.capacity %></:col>
+  <:col :let={hardware_set} label="Available"><%= hardware_set.available %></:col>
+  <:action :let={hardware_set}>
+    <div class="sr-only">
+      <.link navigate={~p"/hardware/#{hardware_set}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/hardware/#{hardware_set}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={hardware_set}>
+    <.link href={~p"/hardware/#{hardware_set}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

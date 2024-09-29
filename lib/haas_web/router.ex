@@ -53,7 +53,9 @@ defmodule HaasWeb.Router do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
 
-      resources "/projects", ProjectController
+      resources "/projects", ProjectController do
+        resources "/hardware", HardwareSetController
+      end
     end
   end
 
