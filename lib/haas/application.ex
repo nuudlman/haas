@@ -11,8 +11,7 @@ defmodule Haas.Application do
       HaasWeb.Telemetry,
       Haas.Repo,
       {Ecto.Migrator,
-        repos: Application.fetch_env!(:haas, :ecto_repos),
-        skip: skip_migrations?()},
+       repos: Application.fetch_env!(:haas, :ecto_repos), skip: skip_migrations?()},
       {DNSCluster, query: Application.get_env(:haas, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Haas.PubSub},
       # Start the Finch HTTP client for sending emails
