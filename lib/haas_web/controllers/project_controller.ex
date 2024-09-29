@@ -34,7 +34,12 @@ defmodule HaasWeb.ProjectController do
   def edit(conn, %{"id" => id}) do
     project = Projects.get_project!(id)
     changeset = Projects.change_project(project)
-    render(conn, :edit, project: project, changeset: changeset, current_user: conn.assigns.current_user)
+
+    render(conn, :edit,
+      project: project,
+      changeset: changeset,
+      current_user: conn.assigns.current_user
+    )
   end
 
   def update(conn, %{"id" => id, "project" => project_params}) do
@@ -47,7 +52,11 @@ defmodule HaasWeb.ProjectController do
         |> redirect(to: ~p"/projects/#{project}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, :edit, project: project, changeset: changeset, current_user: conn.assigns.current_user)
+        render(conn, :edit,
+          project: project,
+          changeset: changeset,
+          current_user: conn.assigns.current_user
+        )
     end
   end
 
